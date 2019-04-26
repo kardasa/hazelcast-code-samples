@@ -15,14 +15,14 @@ public class Application {
 
     private static Config config;
 
-    @Bean
-    public Config hazelcastConfig() {
-        Config config = new Config();
-        JoinConfig joinConfig = config.getNetworkConfig().getJoin();
-        joinConfig.getMulticastConfig().setEnabled(false);
-        joinConfig.getKubernetesConfig().setEnabled(true);
-        return config;
-    }
+    // @Bean
+    // public Config hazelcastConfig() {
+    //     Config config = new Config();
+    //     JoinConfig joinConfig = config.getNetworkConfig().getJoin();
+    //     joinConfig.getMulticastConfig().setEnabled(false);
+    //     joinConfig.getKubernetesConfig().setEnabled(true);
+    //     return config;
+    // }
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
