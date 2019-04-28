@@ -75,9 +75,10 @@
             <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.1</version>
 				<configuration>
-				  <!-- DO NOT include log4j.properties file in your Jar -->
-				  <archive>
+                    <outputDirectory>${project.build.directory}/../MyDocker/</outputDirectory>
+				    <archive>
 					<manifest>
 						<!-- Jar file entry point -->
 						<mainClass>com.hazelcast.kubernetes.Application</mainClass>
@@ -85,14 +86,6 @@
 				  </archive>
 				</configuration>
 			</plugin>
-            <!--<plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>0.9.13</version>
-                <configuration>
-                    <allowInsecureRegistries>true</allowInsecureRegistries>
-                </configuration>
-            </plugin>-->
         </plugins>
     </build>
 </project>
