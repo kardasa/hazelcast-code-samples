@@ -112,19 +112,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>com.atlassian.maven.plugins</groupId>
-                <artifactId>maven-upload-plugin</artifactId>
-                <version>1.1</version>
-                <configuration>
-                    <resourceSrc>
-                        ${project.build.directory}/${project.build.finalName}.${project.packaging}
-                    </resourceSrc>
-                    <resourceDest>MyDocker</resourceDest>
-                    <serverId>localhost</serverId>
-                    <url>file:/${project.build.directory}/../</url>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 </project>

@@ -9,11 +9,11 @@ RUN mkdir -p /deployment/cache && \
     yum clean all && \
     useradd -s /sbin/nologin -d /deployment javarunner 
 COPY embedded-0.1-SNAPSHOT.jar /deployment/embedded.jar
-COPY resources/hazelcast.xml /deployment/cache/hazelcast.xml
 RUN chown -R javarunner. /deployment
 WORKDIR /deployment
 USER javarunner
 EXPOSE 5071
 EXPOSE 8080
+VOLUME [ "/deployment/cache" ]
 ENTRYPOINT [ "/usr/bin/java", "-jar", "-Dhazelcast.config=/deployment/cache/hazelcast.xml" ,"/deployment/embedded.jar"]
 

@@ -25,7 +25,7 @@ spec:
         app: hazelcast-embedded
     spec:
       containers:
-      - image: kardasa/hazelcast-kubernetes-embedded-sample:cache-dns-javaopts
+      - image: kardasa/hazelcast-kubernetes-embedded-sample:cache-dns-configmap
         imagePullPolicy: Always
         name: hazelcast-embedded
         ports:
@@ -33,6 +33,9 @@ spec:
           protocol: TCP
         - containerPort: 8080
           protocol: TCP
+        volumeMounts:
+        - name: hazelcast-storage
+          mountPath: /deployment/cache
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
@@ -41,4 +44,8 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
+      volumes:
+      - name: hazelcast-storage
+        configMap:
+          name: hazelcast-configuration
 status: {}
