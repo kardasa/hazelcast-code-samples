@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hazelcast-app
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: hazelcast
+    nodePort: 31833
+    port: 5701
+    protocol: TCP
+    targetPort: 5701
+  - name: app
+    nodePort: 31864
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: hazelcast-embedded
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}
