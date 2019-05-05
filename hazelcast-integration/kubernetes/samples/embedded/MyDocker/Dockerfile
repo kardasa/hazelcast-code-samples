@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER andrzej.kardas
+ENV SPRING_PROFILES_ACTIVE=ocp
 RUN rm -rf /etc/yum.repos.d/*
 COPY centos.repo /etc/yum.repos.d/
 RUN mkdir -p /deployment/cache && \
@@ -15,5 +15,5 @@ USER javarunner
 EXPOSE 5071
 EXPOSE 8080
 VOLUME [ "/deployment/cache" ]
-ENTRYPOINT [ "/usr/bin/java", "-jar", "-Dhazelcast.config=/deployment/cache/hazelcast.xml" ,"/deployment/embedded.jar"]
+ENTRYPOINT [ "/usr/bin/java", "-jar", "-Dhazelcast.diagnostics.enabled=true" ,"/deployment/embedded.jar"]
 
